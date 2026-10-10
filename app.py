@@ -39,7 +39,9 @@ elif role == "Support Agent":
     agent_name = st.sidebar.text_input("Agent name", value=sess.agent_name or "")
     staff_code = st.sidebar.text_input("Staff access code", type="password")
     if st.sidebar.button("Start"):
-        if not STAFF_ACCESS_CODE or not hmac.compare_digest(staff_code, STAFF_ACCESS_CODE):
+        if not agent_name:
+            st.sidebar.error("Please enter an agent name")
+        elif not STAFF_ACCESS_CODE or not hmac.compare_digest(staff_code, STAFF_ACCESS_CODE):
             st.sidebar.error("Invalid staff code")
         else:
             sess.hard_reset()

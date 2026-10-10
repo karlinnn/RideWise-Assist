@@ -23,6 +23,13 @@ def context_node(state: Dict[str, Any]) -> Dict[str, Any]:
     "booking_id": "<str|null>"
 }}
 
+Intent guide:
+- policy: rental terms, EV charging / user-guide / FAQ, how to use a vehicle, general rules
+- penalty: late return fees, damage charges, low-battery return fees
+- refund: cancellation and refund rules
+- vehicle: the specific vehicle on a booking (model, plate) from company records, NOT charging how-to or EV FAQ
+If a question is about penalties, refunds, policies, or EV charging/FAQ, do not use vehicle, chitchat, or other.
+
 User message: {user_message}
 History: {json.dumps(history)}
 Active booking ID: {active_booking_id}"""

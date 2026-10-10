@@ -2,6 +2,10 @@ import os
 import json
 from pypdf import PdfReader
 
+_PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+DEFAULT_DATA_DIR = os.path.join(_PROJECT_ROOT, "data", "policies")
+DEFAULT_OUTPUT_DIR = os.path.join(_PROJECT_ROOT, "storage", "policy_index")
+
 def extract_chunks_from_pdf(filepath, chunk_size=300, overlap=50):
     reader = PdfReader(filepath)
     filename = os.path.basename(filepath)
@@ -27,7 +31,16 @@ def extract_chunks_from_pdf(filepath, chunk_size=300, overlap=50):
                 break
     return chunks
 
-def build_index(data_dir="data/policies", output_dir="storage/policy_index"):
+def build_index(data_dir=None, output_dir=None):
+    if data_dir is None:
+        data_dir = DEFAULT_DATA_DIR
+    elif not os.path.isabs(data_dir):
+        data_dir = os.path.join(_PROJECT_ROOT, data_dir)
+    if output_dir is None:
+        output_dir = DEFAULT_OUTPUT_DIR
+    elif not os.path.isabs(output_dir):
+        output_dir = os.path.join(_PROJECT_ROOT, output_dir)
+
     all_chunks = []
     if not os.path.exists(data_dir):
         print(f"Data directory {data_dir} does not exist.")
@@ -43,5 +56,5 @@ def build_index(data_dir="data/policies", output_dir="storage/policy_index"):
                 print(f"Failed to read {fname}: {e}")
                 
     os.makedirs(output_dir, exist_ok=True)
-    with open(os.path.join(output_dir, "chunks.json"), "w") as f:
+    with open(os.path.join(output_dir, "chunks.json"), "w", encoding="utf-8") as f:
         json.dump(all_chunks, f)

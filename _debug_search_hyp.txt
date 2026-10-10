@@ -1,0 +1,18 @@
+QUERY penalty for returning rental late tokens ['penalty', 'return', 'rental', 'late']
+  2.5900 01_Rental_Agreement_and_Terms.pdf p1
+  2.5575 01_Rental_Agreement_and_Terms.pdf p2
+  2.5168 04_Late_Return_and_Damage_Penalty_Schedule.pdf p2
+  2.2548 01_Rental_Agreement_and_Terms.pdf p2
+  2.0109 04_Late_Return_and_Damage_Penalty_Schedule.pdf p3
+  1.9821 01_Rental_Agreement_and_Terms.pdf p1
+  1.9350 04_Late_Return_and_Damage_Penalty_Schedule.pdf p1
+  1.8912 04_Late_Return_and_Damage_Penalty_Schedule.pdf p1
+QUERY EV won't charge tokens ['ev', 'won', 'charge']
+  2.8144 05_EV_User_Guide_and_FAQ.pdf p1
+  2.3672 05_EV_User_Guide_and_FAQ.pdf p2
+  2.2767 04_Late_Return_and_Damage_Penalty_Schedule.pdf p2
+  1.8484 01_Rental_Agreement_and_Terms.pdf p2
+  1.1178 04_Late_Return_and_Damage_Penalty_Schedule.pdf p1
+  0.7454 01_Rental_Agreement_and_Terms.pdf p1
+  0.7173 01_Rental_Agreement_and_Terms.pdf p1
+  0.6038 02_Cancellation_and_Refund_Policy_v1.pdf p1

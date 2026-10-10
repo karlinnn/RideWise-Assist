@@ -42,8 +42,8 @@ def retrieval_node(state: Dict[str, Any]) -> Dict[str, Any]:
             if b_info and "error" not in b_info:
                 version = get_applicable_version(b_info)
                 
-        query = state.get("standalone_question", "")
-        results = search_policy(query, version=version, top_k=3)
+        query = state.get("standalone_question") or state.get("user_message") or ""
+        results = search_policy(query, version=version if version != "unknown" else None, top_k=3)
         if results:
             evidence.append({"tool": "search_policy", "args": {"query": query, "version": version}, "result": results})
         else:
